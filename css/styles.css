@@ -216,7 +216,7 @@ img {
     padding: 188px 0;
     max-width: 1440px;
     margin: 0 auto;
-    background-image: linear-gradient(rgba(46, 47, 66, 0.7),rgba(46, 47, 66, 0.7)), url('../images/heroimg.jpg');
+    background-image: linear-gradient(var(--hero-background-color),var(--hero-background-color)), url('../images/heroimg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -234,9 +234,10 @@ img {
     color: var(--white-background-text-color)
 }
 .hero-btn {
-    display: block;
     margin: 48px auto 0 auto;
-
+}
+.order-btn {
+    display: block;
     font-family: 'Roboto', sans-serif ;
     min-width: 169px;
     height: 56px;
@@ -250,7 +251,7 @@ img {
     color: var(--white-background-text-color);
     transition: background-color var(--transition-dur-func);
 }
-.hero-btn:hover{
+.order-btn:hover {
     background-color: var(--pressed-state-color);
 }
 
@@ -476,7 +477,7 @@ img {
     margin-bottom: 8px;
 }
 
-/* ========== Footer ========== */
+/* ========== Footer logo & social links ========== */
 
 .footer{
     background-color: var(--dark-color);
@@ -503,7 +504,10 @@ img {
     letter-spacing: 0.02em;
     color: var(--light-mode-color);
 }
-.footer-social-title {
+.footer-social {
+    margin-right: 80px;
+}
+.footer-title {
     margin-bottom: 16px;
     font-weight: 500;
     font-size: 16px;
@@ -529,7 +533,55 @@ img {
     fill: var(--light-mode-color);
 }
 
-/* ========== Modal window ==========*/
+ /* ========== Footer subscribe ======== */
+
+.subscribe-form {
+    display: flex;
+    
+}
+.subscribe-mail-wrapper {
+    margin-right: 24px;
+}
+.subscribe-mail-fild {
+    min-width: 264px;
+    height: 40px;
+    padding: 8px 16px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    color: var(--white-background-text-color);
+
+    border: 1px solid var(--white-background-text-color);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    color: var(--white-background-text-color);
+    background-color: transparent;
+}
+.subscribe-mail-fild::placeholder {
+    color: var(--white-background-text-color);
+}
+.subscribe-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 24px;
+
+    min-width: 165px;
+    height: 40px;
+    border: none;
+    background-color: var(--primary-brand-color);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--white-background-text-color);
+}
+.subscribe-btn:hover,
+.subscribe-btn:focus {
+    background-color: var(--pressed-state-color);
+}
+/* ========== Backdrop & Modal window ==========*/
 
 .backdrop {
     position: fixed;
@@ -537,7 +589,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(46, 47, 66, 0.4);
+    background-color: var(--modal-overlay-color);
     transition: opacity var(--transition-dur-func), visibility var(--transition-dur-func);
 }
 .modal {
@@ -551,6 +603,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: transform var(--transition-dur-func);
+    padding: 72px 24px 24px;
 }
 .modal-close-btn {
     display: flex;
@@ -572,7 +625,6 @@ img {
 .modal-close-btn:focus {
     background-color: var(--pressed-state-color);
     border: none;
-    /* fill: #FFFFFF; */
 }
 .is-hidden {
     opacity: 0;
@@ -584,7 +636,128 @@ img {
 }
 
 .modal-close-btn:hover .modal-close-icon,
-.modal-close-btn:focus .modal-close-icon{
+.modal-close-btn:focus .modal-close-icon {
     fill: #FFFFFF;
 }
-    
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+.modal-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: var(--dark-color);
+    margin-bottom: 16px;
+}
+.modal-field-wrapper,
+modal-checkbox-wrapper {
+    display: block;
+    margin-bottom: 8px;
+}
+.modal-field-desc {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--subtle-text-color);
+    margin-bottom: 4px;
+}
+.modal-input-wrapper {
+    display: block;
+    position: relative;
+}
+.modal-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--modal-overlay-color);
+    border-radius: 4px;
+    padding-left: 38px;
+    transition: border-color var(--transition-dur-func);
+}
+.modal-input:focus {
+    outline: non;
+    border-color: var(--primary-brand-color);
+}
+.modal-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 24px;
+    transition: fill var(--transition-dur-func);
+}
+.modal-input:focus + .modal-input-icon {
+    fill: var(--primary-brand-color);
+}
+.modal-text {
+    width: 100%;
+    height: 120px;
+    resize: none;
+    border: 1px solid var(--modal-overlay-color);
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: border-color var(--transition-dur-func);
+}
+.modal-text::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--modal-overlay-color);
+}
+.modal-text:focus {
+    outline: non;
+    border-color: var(--primary-brand-color);
+}
+/*========== Checkbox ==========*/
+.modal-checkbox-form-wrapper {
+    margin-bottom: 24px;
+}
+.modal-checkbox {
+    appearance: none;
+    position: absolute;
+}
+.modal-checkbox-privacy {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--subtle-text-color);
+}
+.modal-checkbox-icon {
+    fill: var(--light-mode-color);
+}
+.modal-checkbox-wrapper {
+    margin-right: 6px;
+    padding: 1px 3px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--modal-overlay-color);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: border-color var(--transition-dur-func), background-color var(--transition-dur-func);
+}
+.modal-checkbox:checked + .modal-checkbox-privacy > .modal-checkbox-wrapper{
+    border: none; 
+    border-color: var(--pressed-state-color);
+    background-color: var(--pressed-state-color);
+    fill: #FFFFFF;
+}
+.privacy-policy {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-decoration-line: underline;
+    color: var(--primary-brand-color);
+}
+.modal-submit {
+    margin: 0 auto 24px auto;
+}
